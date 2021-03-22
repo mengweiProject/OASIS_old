@@ -36,36 +36,3 @@ class ForDBs:
             self.conn.rollback()
 
 
-tt = ForDBs()
-
-
-def do_query(sql):
-    try:
-        return tt.cur.fetchall()
-    except:
-        return None
-
-
-def do_execute(sql):
-    try:
-        tt.cur.execute(sql)
-        tt.conn.commit()
-        return constants.SUCESS
-    except Exception as e:
-        return constants.FAILURE
-
-
-def query_to_df(sql):
-    try:
-        # ret = do_query(sql)
-        df = pd.read_sql(sql, tt.conn)
-        df.columns = [str(i).upper() for i in df.columns]
-        # print(df.columns)
-        return df
-    except:
-        return None
-
-
-if __name__ == '__main__':
-    sql = "select * from basic_info limit 100;"
-    print(query_to_df(sql))
