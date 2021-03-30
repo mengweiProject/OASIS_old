@@ -5,9 +5,10 @@ CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/2'
 CELERY_TIMEZONE = 'Asia/Shanghai'
 
 CELERY_IMPORTS = (
-    'celeryTasks.test1',
+    # 'celeryTasks.test1',
     # 'CeleryTask.tasks_insert',
     # 'CeleryTask.task_print222',
+    "celeryTasks.tasksCalcCommon",
 )
 
 CELERYBEAT_SCHEDULE = {
@@ -21,20 +22,25 @@ CELERYBEAT_SCHEDULE = {
     #     'schedule': timedelta(seconds=5),
     #     'args': ()
     # },
-    'main_calc': {
-        'task': 'celeryTasks.test1.print111',
-        'schedule': timedelta(seconds=10),
-        'args': ()
-    },
+    # 'main_calc': {
+    #     'task': 'celeryTasks.test1.print111',
+    #     'schedule': timedelta(seconds=10),
+    #     'args': ()
+    # },
     # 'tasks_insert_into_mysql': {
     #     'task': 'CeleryTask.tasks_insert.generator',
     #     'schedule': timedelta(seconds=3),
     #     'args': ()
     # },
-    "myAdd": {
-        "task": "celeryTasks.test1.add",
-        "schedule": timedelta(seconds=10),
-        "args": (1111111, 222222),
+    # "myAdd": {
+    #     "task": "celeryTasks.test1.add",
+    #     "schedule": timedelta(seconds=10),
+    #     "args": (1111111, 222222),
+    # }
+    "tasksCalcCommon": {
+        "task": "celeryTasks.tasksCalcCommon.calc_common",
+        "schedule": timedelta(seconds=15),
+        "args": ()
     }
 }
 
