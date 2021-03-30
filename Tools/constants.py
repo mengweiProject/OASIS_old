@@ -12,6 +12,8 @@ import string
 # 程序执行结果，0表示成功，4表示失败
 SUCESS = 0
 FAILURE = 4
+# 已存在
+EXISTENCE = 5
 
 
 # 26个大写/小写字母，列表

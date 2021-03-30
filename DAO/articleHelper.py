@@ -8,13 +8,33 @@
 
 
 from DAO import mysqlHelper
+from Tools import constants as cs
 
 
-def articleAdd(title="无标题", author="佚名", language="NULL"):
-    sql = "INSERT INTO article_list(title, author, language) VALUES('{}', '{}', '{}');".format(title, author, language)
-    return mysqlHelper.do_execute(sql)
+def register(userName, pwd, age, pse, toBeAuthor):
+    """
 
+    :param userName:
+    :param pwd:
+    :param age:
+    :param pse:
+    :param toBeAuthor:
+    :return:
+    """
+    try:
+        query = """SELECT u.* FROM user_info u WHERE u.u_name = '{userName}';""".format(userName=userName)
+        result = mysqlHelper.query_to_df(query)
+        if result.empty or len(result) == 0:
+            print("开始注册流程")
+            #TODO
+            #考虑用装饰器实现验证
+        else:
+            return cs.EXISTENCE
+        return cs.SUCESS
+    except Exception as e:
+        print(e)
+        return cs.FAILURE
 
 
 if __name__ == '__main__':
-    print(articleAdd("python3基础教程", "奥斯特洛夫斯基", ""))
+    pass

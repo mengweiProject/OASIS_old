@@ -1,3 +1,8 @@
+"""
+blog历史执行sql留痕
+"""
+
+
 # 创建数据库
 CREATE DATABASE myblog;
 
@@ -60,3 +65,6 @@ AUTO_INCREMENT=0;
 
 # DESC user_info;
 
+ALTER TABLE user_info ADD PASSWORD CHAR(30) NOT NULL COMMENT "用户密码";
+
+ALTER TABLE user_info CHANGE PASSWORD password CHAR(30);
