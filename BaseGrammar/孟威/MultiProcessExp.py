@@ -1,35 +1,19 @@
-'''
-@Project ：OASIS 
-@Author  ：孟威
-@Date    ：2021/3/24 17:29 
-'''
 
 
-from multiprocessing import Pool
-from time import sleep
 
+import pandas as pd
 
-def run(n):
-    sleep(2)
-    # print(n)
-    return n ** 2
 
 
 if __name__ == '__main__':
-    idList = [i for i in range(100)]
-    p = Pool(10)
+    # d_list = [{"a": 1, "b": 2, "c": 3}, {"a": 1, "b": 2, "c": 3}, {"a": 1, "b": 2, "c": 3}]
+    # df = pd.DataFrame(d_list, index=['2019-12-01', '2019-12-02', '2019-12-03'])
+    # print(df)
+    # print(df.to_json())
+    # print(df.to_dict())
 
-    for i in range(100):
-        paramList = [x for x in range(i * 10, i * 10 + 10)]
-        # print(paramList)
-        result = p.map(run, paramList)
-        print(result)
-        print("==============")
-        if i > 6:
-            break
-
-
-
-
-    # p2 = Pool(6)
-    # p2.map(run, idList)
+    s = pd.Series(data=[1, 2, 3, 4, 5], index=['2019-12-01', '2019-12-02', '2019-12-03', '2019-12-04', '2019-12-05'])
+    print(s)
+    s = s[s.index >= '2019-12-06']
+    s = s[s.index <= '2019-12-04']
+    print(s)
