@@ -8,8 +8,8 @@
 def decorator(func):
     def run(username, pwd):
         print("验证...")
-        func(username, pwd)
-        return 123
+        return func(username, pwd)
+        # return 123
     return run
 
 
@@ -19,4 +19,4 @@ def login(username, pwd):
     return 1
 
 if __name__ == '__main__':
-    login(212312, 23452345)
+    print(login(212312, 23452345))

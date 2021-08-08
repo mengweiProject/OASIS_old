@@ -7,4 +7,5 @@
 from celery import Celery
 
 app = Celery('tasks_mytest')
+# 指定celery配置文件的路径和名称
 app.config_from_object('celeryTasks.celeryconfig')

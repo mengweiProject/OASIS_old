@@ -18,3 +18,107 @@
 代码提交
 1. commit信息：一律以 #OASIS-+数字# 开头
     如： #OASIS-001#项目初始化
+
+
+新版编程规范（取自performance_service）
+# Python-编程规范&经验
+
+文件夹、文件：
+    命名尽量小写、下划线形式
+    文件夹中使用 __init__.py 文件进行包内容描述
+    文件包含文件功能描述
+
+函数：
+    每个函数尽量只完成一件事情，取数与计算尽量分离；
+    多个函数相同时，考虑抽象提取；
+    取数为get、计算为calc
+    参数及变量：
+        函数的入参，尽量按小写、下划线的形式，比如 bench_yield_series
+        参数及变量尽量能够反映参数类型，如 xxx_lst yy_dct xx_series
+        函数包含出入参描述，介绍出入参类型，并给出样例
+        需要对出入参进行校验
+        命名需要有意义，使用具体的名字，尽量不使用 res、tmp args params 等无意义名词
+        可以使用有意义长名字命名, 保证易于理解和阅读
+        不同地方相同的参数尽量使用同一命名
+        对于bool型变量，除非名字本身有True/False的含义, 否则建议统一使用is_ ，如 is_monetry_fund
+        定义变量不要过早定义，可以在使用时再定义，越相关的代码聚的越近
+        中文, 请统一使用u"中文"
+        函数一般情况下不要改变入参，即不要对入参进行属性修改或重新赋值
+
+    注释：
+        函数包含注释，描述函数功能
+        可以给出函数调用样例
+        避免尾注释
+        x = 1  # bad comment
+
+        # good comment
+        x = 1
+
+        注释前加空行
+        注释代码时, 应注重-为何做, 而不是-怎么做
+
+    样例：
+    def win_ratio(port_yield_series, bench_yield_series):
+        """
+        计算胜率
+
+        :param port_yield_series: pd.series, 产品收益率序列
+        :param bench_yield_series: pd.series, 基准收益率序列
+        :return: float, 胜率
+        """
+        win_day = port_yield_series[port_yield_series > bench_yield_series]
+        return round(len(win_day) / float(len(port_yield_series)), 4)
+
+
+取数函数：
+    涉及取数的函数，尽量附带 db_helper 参数，便于支持不同环境不同数据源的DB访问；
+    取数中不进行结果为空的异常处理，可以进行打印warn日志，取数的结果判断由调用方处理；
+    数据字段尽量全大写（Oracle访问DB时，df中字段默认大写）
+
+import包：
+    导入顺序为1）标准库，2）第三方库，3）本地库，每一类之间按空行隔开
+    慎重使用import *，如无必要，尽量不使用该方法，容易造成命名空间污染及多层引用带来的诡异问题
+    引用包尽量只引入文件名，这样做能够更清晰地看到函数的出处，引用处也会比较简洁，如：
+    # recommend
+    from performance_lib.Util import date_util
+    date_util.days_in_one_year()
+
+    # not recommend
+    from performance_lib.Util.date_util import days_in_one_year
+    days_in_one_year()
+
+
+df、series：
+    避免使用 df[0]、df[0][0] ，使用 df.TRADINGCODE df.TRADINGCODE[0]
+
+UT：
+    函数文件及函数应在 test 中创建对应层级测试目录及测试文件，进行单元测试
+    每次提交前应跑下涉及修改的UT或全量UT
+
+编程风格：
+    满足pep8规范；
+    放弃较为复杂的表达式，改为更易清晰易懂的表达式；
+
+日志：
+    有效信息通过 logger.info('info:xxx') logger.warn('warn: xxx') logger.error('error:xxx') 等进行记录
+
+Django项目：
+    views中尽量只做参数获取、函数调用及返回，不做实际取数及计算；
+    每个App应该只做一件事，尽量用小的App而不是大的app；
+    尽量用一个单词进行命名，用全小写字母，不要用数字及其他字符，避免使用下划线
+    目前暂定按功能定义app，如：
+            情景分析、压力测试
+            盈亏分析
+            净值分析
+            交易分析
+            持仓分析
+            barra
+            流动性风险
+            信用风险
+            组合总览
+
+本地与服务器配置PYTHONPATH，尽量不使用 sys.path.append
+
+Python环境：
+    2的环境用 2.7.x x可以高一点，当前Evar与Performance项目的默认环境
+    3的环境用 3.6.x 未来配置环境，Lib及Service环境，新开发代码应默认支持Python3规范

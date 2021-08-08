@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tools" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/celeryTasks" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BaseGrammar/孟威" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
