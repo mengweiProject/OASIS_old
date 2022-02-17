@@ -4,6 +4,8 @@ import json
 
 
 # Create your views here.
+from Tools.user_helper import login_verification
+from DAO.blog_helper import add_blog_dao
 
 
 def index(request):
@@ -29,3 +31,12 @@ def get_cookies_t(request):
     cookie = request.COOKIES.get('my_cookie', None)
     print(cookie)
     return HttpResponse('success get cookies')
+
+
+@login_verification
+def add_blog(request):
+    title = request.GET.get('title')
+    author = request.GET.get('author')
+    content = request.GET.get('content')
+    ret = add_blog_dao(title, author, content)
+    return HttpResponse(f'insert result is {"success" if ret == 0 else "failure"}')

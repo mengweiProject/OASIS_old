@@ -7,8 +7,8 @@
 
 import pandas as pd
 import pymysql
-import constants
-
+# import constants
+from Tools import constants
 
 class ForDBs:
     def __init__(self):
@@ -17,7 +17,7 @@ class ForDBs:
             port=3306,
             user='root',
             passwd='666666',
-            db='data_analysis',
+            db='tbasicinfo',
             charset='utf8'
         )
         self.cur = self.conn.cursor()

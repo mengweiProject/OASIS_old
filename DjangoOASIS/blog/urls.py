@@ -8,4 +8,6 @@ urlpatterns = [
     path("testJson", views.testJson, name="testJson"),
     path("set_cookies_t", views.set_cookies_t, name="set_cookies_t"),
     path("get_cookies_t", views.get_cookies_t, name="get_cookies_t"),
+
+    path('add_blog', views.add_blog),
 ]

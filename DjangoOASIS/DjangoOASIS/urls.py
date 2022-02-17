@@ -20,5 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # include语法相当于多级路由，它把接收到的url地址去除与此项匹配的部分，将剩下的字符串传递给下一级路由urlconf进行判断
     path('blog/', include("blog.urls")),
-    path('tuotuo/', include('tuotuo.urls'))
+    path('tuotuo/', include('tuotuo.urls')),
+    path('user/', include('user.urls')),
 ]

@@ -14,6 +14,8 @@ SUCESS = 0
 FAILURE = 4
 # 已存在
 EXISTENCE = 5
+# 不存在
+NOTEXISTENCE = 6
 
 
 # 26个大写/小写字母，列表
