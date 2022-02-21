@@ -128,3 +128,15 @@ STATIC_URL = '/static/'
 
 # 设置session超时时间，默认是两周，单位秒 >> 修改为一天
 SESSION_COOKIE_AGE = 24 * 60 * 60
+
+CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+            'LOCATION': 'temp_cache_table',
+            'TIMEOUT': 300, # 缓存时间，单位秒，默认值300
+            'OPTIONS': {
+                'MAX_ENTRIES': 300, # 缓存最大条数
+                'CULL_FREQUENCY': 2, # 缓存条数达到最大时，删除 1/X 的缓存数据
+            }
+        }
+}

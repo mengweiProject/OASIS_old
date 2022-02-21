@@ -19,3 +19,11 @@ def add_blog_dao(title, author, content):
     sql = f"insert into blog (title, author, content) values('{title}', '{author}', '{content}');"
     print(sql)
     return mysqlHelper.do_execute(sql)
+
+
+def show_blog_by_keys(**kwargs):
+    # title = kwargs.get('title')
+    # author = kwargs.get('author')
+    sql = "select * from blog"
+    print(sql)
+    return mysqlHelper.query_to_df(sql)

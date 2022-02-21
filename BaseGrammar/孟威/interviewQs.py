@@ -9,6 +9,8 @@ from time import sleep
 import random
 import re
 
+from django.core.cache import cache
+
 from time_helper import time_consume
 
 
