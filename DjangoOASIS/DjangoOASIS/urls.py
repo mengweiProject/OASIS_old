@@ -22,4 +22,6 @@ urlpatterns = [
     path('blog/', include("blog.urls")),
     path('tuotuo/', include('tuotuo.urls')),
     path('user/', include('user.urls')),
+    path('middlewareTest/', include('middlewareTest.urls')),
+    path('download/', include('download.urls')),
 ]

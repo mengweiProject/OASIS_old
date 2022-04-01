@@ -247,7 +247,11 @@ def nineteen():
 
 
 if __name__ == '__main__':
-    seventeen()
+    print('\033[31mdsafasdgasd')
+    print('\033[32mdsafasdgasd')
+    print('\033[33mdsafasdgasd')
+    print('\033[34mdsafasdgasd')
+    # seventeen()
     # Thirteen()
     # t = Thirteen()
     # print(t.name)
