@@ -23,10 +23,11 @@ import numpy as np
 #     print(df)
 
 def applyExp1():
-    df = pd.DataFrame([{"a": 1, "b": 2, "c": 3}])
+    df = pd.DataFrame([{"a": 1, "b": 2, "c": 3}, {"a": 1, "b": 2, "c": 3}, {"a": 1, "b": 2, "c": 3}])
     print(df)
-    df["len"] = df["a"].apply(lambda x: x ** 2)
-    print(df)
+    # df["len"] = df["a"].apply(lambda x: x ** 2)
+    # print(df)
+    print(df.apply(lambda x: x.a + x.b, axis=1))
 
 
 if __name__ == '__main__':

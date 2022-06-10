@@ -24,4 +24,5 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('middlewareTest/', include('middlewareTest.urls')),
     path('download/', include('download.urls')),
+    path('asyncioApp/', include('asyncioApp.urls')),
 ]

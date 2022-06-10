@@ -5,6 +5,14 @@
 '''
 
 from datetime import datetime
+from threading import Thread
+
+
+def myAsync(func):
+    def wrapper(*args, **kwargs):
+        t = Thread(target=func, args=args, kwargs=kwargs)
+        t.start()
+    return wrapper
 
 
 def time_consume(func):

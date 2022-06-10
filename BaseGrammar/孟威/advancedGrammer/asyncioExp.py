@@ -13,14 +13,23 @@ loop = asyncio.get_event_loop()
 
 
 async def consume_time():
+    print('start consume_time')
     await asyncio.sleep(3)
     return 3
 
 
-if __name__ == '__main__':
-    s_time = time()
+def run():
+    # s_time = time()
     tasks = [consume_time() for _ in range(2)]
-    results = loop.run_until_complete(asyncio.wait(tasks))
-    f_time = time()
+    # results = loop.run_until_complete(asyncio.wait(tasks))
+    loop = asyncio.get_event_loop()
+    loop.run_in_executor()
+    # f_time = time()
+    print(results)
 
-    print(f_time - s_time)
+    # print(f_time - s_time)
+    return 'main end...'
+
+
+if __name__ == '__main__':
+    print(run())
