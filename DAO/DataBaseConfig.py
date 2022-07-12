@@ -13,11 +13,11 @@ from Tools import constants
 class ForDBs:
     def __init__(self):
         self.conn = pymysql.connect(
-            host='localhost',
-            port=3306,
+            host='114.116.25.129',
+            port=49164,
             user='root',
-            passwd='666666',
-            db='tbasicinfo',
+            password='123456',
+            database='oasisDB',
             charset='utf8'
         )
         self.cur = self.conn.cursor()

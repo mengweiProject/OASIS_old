@@ -40,5 +40,6 @@ def query_to_df(sql):
 
 
 if __name__ == '__main__':
-    sql = "select U_ID,U_NAME,C_TIME from basic_info limit 100;"
+    # sql = "select U_ID,U_NAME,C_TIME from basic_info limit 100;"
+    sql = "select * from user;"
     print(query_to_df(sql))

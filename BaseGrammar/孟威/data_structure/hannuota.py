@@ -5,6 +5,8 @@
 递归实现汉诺塔
 '''
 
+import numpy as np
+
 
 def recursion(n, A, B, C):
     """
@@ -24,4 +26,7 @@ def recursion(n, A, B, C):
 
 
 if __name__ == '__main__':
-    recursion(3, 'A', 'B', 'C')
+    # recursion(3, 'A', 'B', 'C')
+    d = {'a': 1, 'b': np.nan}
+    d = {k: v if v == v and v is not None else None for k, v in d.items()}
+    print(d)
