@@ -44,6 +44,11 @@ CELERYBEAT_SCHEDULE = {
     }
 }
 
+
+# 先开启redis服务
+# cd C:\Users\13395\Desktop\杂乱有章\history_picture
+# C:\Users\13395\Desktop\杂乱有章\history_picture>redis-server.exe redis.windows.conf
+
 # C:\Users\13395\Desktop\git_area\project>celery beat -A CeleryTask -l info
 # 关的时候先关子进程，再关任务发布进程
 
