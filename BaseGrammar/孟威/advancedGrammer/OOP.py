@@ -1,6 +1,7 @@
 
 
 
+
 class Country:
     area = None
     province = None

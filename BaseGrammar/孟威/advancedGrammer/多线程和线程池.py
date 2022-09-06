@@ -48,8 +48,8 @@ if __name__ == '__main__':
         results = pool.map(my_sleep, tasks)
         # print(results)
 
-        # for res in results:
-        #     print(res)
+        for res in results:
+            print(res)
 
     f_date = datetime.now()
     consume_time = f_date - s_date

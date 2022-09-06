@@ -21,5 +21,5 @@ def time_consume(func):
         func(*args, **kwargs)
         e_date = datetime.now()
         consume_time = e_date - s_date
-        print(f'thread run time is {consume_time}')
+        print(f'========= {func.__name__} run time is {consume_time}')
     return run
