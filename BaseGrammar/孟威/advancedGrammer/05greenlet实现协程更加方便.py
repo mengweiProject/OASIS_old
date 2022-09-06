@@ -7,6 +7,8 @@
 import greenlet
 import time
 
+from django.utils.encoding import escape_uri_path
+
 
 def work1():
     for i in range(5):
