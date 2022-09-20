@@ -234,5 +234,65 @@
 
 
 # 7. 类属性的补充，私有化属性
-class Person:
-    pass
+# class Person:
+#     pass
+
+
+
+# 8. 只读属性
+# class Person:
+#     def __init__(self):
+#         self.__name = 'xiaohong'
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, value):
+#         self.__name = value
+#
+#
+# p = Person()
+# print(p.name)
+#
+# print(Person.__base__)
+# print(Person.__bases__)
+
+# 9. 中断剩余循环且程序正常执行
+# for i in range(100):
+#     print(i)
+#     if i >= 50:
+#         break
+#
+# print('end...')
+
+
+# 10. 修改类名
+# class Person:
+#     __name__ = 'PP'
+#
+# p = Person()
+# print(p.__name__)
+
+# 11. __call__：让类对象可以和函数一样调用
+# class Person:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
