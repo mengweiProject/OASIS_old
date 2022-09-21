@@ -277,8 +277,61 @@
 
 # 11. __call__：让类对象可以和函数一样调用
 # class Person:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __call__(self, *args, **kwargs):
+#         print('xxx')
+#
+# p = Person('xiaohong')
+# print(p.name)
 
+# 12. 偏函数
+# def create_pen(p_type, p_colour):
+#     print(f'这支{p_type}的颜色是{p_colour}')
+#
+# from functools import partial
+#
+# pencil = partial(create_pen, '铅笔')
+#
+# pencil(p_colour='红色')
+# pencil(p_colour='绿色')
 
+# 13. 使用面向对象的方式实现偏函数
+# class Pen:
+#     def __init__(self, d_type):
+#         self.d_type = d_type
+#
+#     def __call__(self, *args, **kwargs):
+#         self.d_colour = args[0]
+#         print(f'这支{self.d_type}的颜色是{self.d_colour}')
+#
+# p = Pen('钢笔')
+# p('红色')
+
+# 14. 面向对象的索引操作
+# class Person:
+#     def __init__(self):
+#         self.cache = {}
+#
+#     def __setitem__(self, key, value):
+#         print(f'捕获到一对键值对：{key}--{value}')
+#         self.cache[key] = value
+#
+#     def __getitem__(self, key):
+#         print(f'输出键值对：{key}')
+#         # print(self.cache.get(key))
+#         return self.cache.get(key)
+#
+#     def __delitem__(self, key):
+#         del self.cache[key]
+#         print(f'删除键值对：{key}')
+#
+#
+# p = Person()
+# p['name'] = '小红'
+# print(p)
+# print(p['name'])
 
 
 
