@@ -275,14 +275,14 @@ super（）用法
 # print(id(n))
 
 
-l1 = [1, 2, 3, [4, 5]]
-
-l2 = l1
-print(l1)
-print(l2)
-l1[3][0] = 444
-print(l1)
-print(l2)
+# l1 = [1, 2, 3, [4, 5]]
+#
+# l2 = l1
+# print(l1)
+# print(l2)
+# l1[3][0] = 444
+# print(l1)
+# print(l2)
 
 # l2 = l1.copy()
 # print(l1)
@@ -292,3 +292,125 @@ print(l2)
 # print(l2)
 
 
+
+# 45. 多继承的覆盖
+# class D:
+#     def run(self):
+#         print('DDD')
+
+# class C(D):
+#     def run(self):
+#         print('CCC')
+# class B(D):
+#     # def run(self):
+#     #     print('DDD')
+#     pass
+#
+# class A(B, C):
+#     # def run(self):
+#     #     print('DDD')
+#     pass
+#
+# a = A()
+# a.run()
+
+# 46. 多继承的覆盖
+# class D:
+#     def run(self):
+#         print('DDD')
+#
+# class C(D):
+#     def run(self):
+#         print('CCC')
+#         print(self)
+#
+#     @classmethod
+#     def test(cls):
+#         print(cls)
+#
+# class B(D):
+#     # def run(self):
+#     #     print('DDD')
+#     pass
+#
+# class A(B, C):
+#     # def run(self):
+#     #     print('DDD')
+#     pass
+#
+# a = A()
+# a.run()
+# a.test()
+
+# 47. 抽象类和抽象方法
+# import abc
+#
+# class Animal(object, metaclass=abc.ABCMeta):
+#     @abc.abstractmethod
+#     def call(self):
+#         pass
+#
+# # class Dog(Animal):
+# #     def call(self):
+# #         print('汪汪汪')
+#
+# a = Animal()
+# a.call()
+
+
+# 50. 面向的对象应用案例
+
+import abc
+
+class Animal(object, metaclass=abc.ABCMeta):
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def run(self):
+        print(f'{self}正在跑...')
+
+    def sleep(self):
+        print(f'{self}正在睡觉...')
+
+    def eat(self):
+        print(f'{self}正在吃饭...')
+
+class Dog(Animal):
+    def work(self):
+        print(f'{self}正在看家...')
+
+    def __str__(self):
+        return f'名字为{self.name}年龄是{self.age}的小狗'
+
+
+class Cat(Animal):
+
+    def work(self):
+        print(f'{self}正在捉老鼠...')
+
+    def __str__(self):
+        return f'名字为{self.name}年龄是{self.age}的小猫'
+
+class Person(Animal):
+    def __init__(self, name, age, pets):
+        super().__init__(name, age)
+        self.pets = pets
+
+    def keep_pets(self):
+        print(f'名字为{self.name}年龄是{self.age}的人正在养宠物...')
+        for pet in self.pets:
+            pet.eat()
+            pet.run()
+            pet.sleep()
+
+    def let_pet_work(self):
+        print(f'名字为{self.name}年龄是{self.age}的人正在让宠物工作...')
+        for pet in self.pets:
+            pet.work()
+
+d = Dog('小黑', 4)
+c = Cat('小红', 3.5)
+
+p = Person('小明', 12, [d, c])
+p.keep_pets()
