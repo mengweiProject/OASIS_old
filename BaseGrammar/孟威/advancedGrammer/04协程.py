@@ -8,17 +8,17 @@ from time import sleep
 
 
 def func1():
-    while 1:
+    for i in range(5):
         print('func1...')
         yield
-        sleep(0.5)
+        sleep(1)
 
 
 def func2():
-    while 1:
+    for i in range(5):
         print('func2___')
         yield
-        sleep(0.5)
+        sleep(1)
 
 
 if __name__ == '__main__':
