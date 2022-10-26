@@ -334,10 +334,73 @@
 # print(p['name'])
 
 
+# class Person:
+#     def size(self):
+#         return 10
+#
+# print(len(Person()))
 
 
+# class A:
+#     def __init__(self):
+#         self.n = 2
+#
+#     def add(self, m):
+#         print('self is {0} @A.add'.format(self))
+#         self.n += m
+#
+#
+# class B(A):
+#     def __init__(self):
+#         self.n = 3
+#
+#     def add(self, m):
+#         print('self is {0} @B.add'.format(self))
+#         super().add(m)
+#         self.n += 3
+#
+#
+# b = B()
+# b.add(2)
+# print(b.n)
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+        # print('父类的构造方法')
 
 
+class Dog(Animal):
+    _instance = None
+
+    def __init__(self, name, age):
+        super(Dog, self).__init__(name)
+        self.age = age
+        print('子类的构造方法')
+
+    @classmethod
+    def leifangfa(cls):
+        print('这是类方法')
+
+    @classmethod
+    def __new__(cls, *args, **kwargs):
+        # 使用单例模式，多次创建实例时虽然都指向同一个内存地址，但是会多次进行实例化
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+
+    def __call__(self, *args, **kwargs):
+        # 让类对象能够像函数一样被调用，这里填写调用时执行的代码，函数体
+        self.leifangfa()
+        print('让类对象能够像函数一样被调用...')
+
+if __name__ == '__main__':
+    d = Dog('jimao', 3)
+    # d()
+    print(d)
+
+    a = Dog('jimao', 3)
+    print(a)
 
 
 
